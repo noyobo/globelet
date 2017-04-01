@@ -1,2 +1,3 @@
 # globelet
-Extends globby with support for directory
+
+Extends [globby](https://github.com/sindresorhus/globby) with support for directory
