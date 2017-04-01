@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint -c ./.eslintrc.js ./index.js ./test",
-    "test": "ava",
+    "test": "nyc --reporter=html --reporter=text ava",
     "codecov": "nyc report --reporter=lcov > coverage/coverage.lcov && codecov"
   },
   "repository": {
