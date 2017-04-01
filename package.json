@@ -4,7 +4,8 @@
   "description": "Extends globby with support for directory",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "xo --fix",
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,9 @@
   "homepage": "https://github.com/noyobo/globelet#readme",
   "dependencies": {
     "globby": "^6.1.0"
+  },
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "xo": "^0.18.1"
   }
 }
