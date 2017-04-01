@@ -4,8 +4,8 @@ const flatten = require('array-flatten');
 
 /* eslint no-param-reassign: 0 */
 function globelet(fn, patterns, opts = {}) {
-  const extnames = opts.extnames || ['.jsx', '.js'];
-  delete opts.extnames;
+  const extnames = opts.globelet || ['.jsx', '.js'];
+  delete opts.globelet;
 
   if (!Array.isArray(patterns)) {
     patterns = [patterns];
