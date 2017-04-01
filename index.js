@@ -3,7 +3,8 @@ const globby = require('globby');
 const flatten = require('array-flatten');
 
 /* eslint no-param-reassign: 0 */
-function globelet(fn, patterns, opts = {}) {
+function globelet(fn, patterns, opts) {
+  opts = opts || {};
   const extnames = opts.globelet || ['.jsx', '.js'];
   delete opts.globelet;
 
