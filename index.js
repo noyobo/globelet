@@ -15,10 +15,10 @@ function globelet(fn, patterns, opts = {}) {
     .filter(pattern => typeof pattern === 'string')
     .map((pattern) => {
       if (!globby.hasMagic(pattern)) {
-        if (path.extname(pattern) === '') {
-          return extnames.map(ext => `${pattern}/**/*${ext}`);
-        } else if (path.extname(pattern) === '' && pattern.endsWith('/')) {
+        if (path.extname(pattern) === '' && pattern.endsWith('/')) {
           return extnames.map(ext => `${pattern}**/*${ext}`);
+        } else if (path.extname(pattern) === '') {
+          return extnames.map(ext => `${pattern}/**/*${ext}`);
         }
       }
       return pattern;

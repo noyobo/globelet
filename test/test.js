@@ -69,6 +69,14 @@ test('globelet - async specified directory', async (t) => {
   ]);
 });
 
+test('globelet - async specified directory', async (t) => {
+  t.deepEqual(await m('./dir/'), [
+    './dir/b.jsx',
+    './dir/a.js',
+  ]);
+});
+
+
 test('glob - async', async (t) => {
   t.deepEqual(await m('*.tmp'), ['a.tmp', 'b.tmp', 'c.tmp', 'd.tmp', 'e.tmp']);
 });
