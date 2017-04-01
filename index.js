@@ -1,16 +1,32 @@
-const fs = require('fs');
+const path = require('path');
 const globby = require('globby');
+const flatten = require('array-flatten');
 
-module.exports = function (patterns, opts) {
-	return globby(patterns, opts);
-};
+/* eslint no-param-reassign: 0 */
+function globelet(fn, patterns, opts = {}) {
+  const extnames = opts.extnames || ['.jsx', '.js'];
+  delete opts.extnames;
 
-module.exports.sync = function (patterns, opts) {
-	return globby.sync(patterns, opts);
-};
+  if (!Array.isArray(patterns)) {
+    patterns = [patterns];
+  }
 
+  const globeletPatterns = patterns
+    .filter(pattern => typeof pattern === 'string')
+    .map((pattern) => {
+      if (!globby.hasMagic(pattern)) {
+        if (path.extname(pattern) === '') {
+          return extnames.map(ext => `${pattern}/**/*${ext}`);
+        } else if (path.extname(pattern) === '' && pattern.endsWith('/')) {
+          return extnames.map(ext => `${pattern}**/*${ext}`);
+        }
+      }
+      return pattern;
+    });
+  return fn.apply(fn, [flatten(globeletPatterns), opts]);
+}
+
+module.exports = (patterns, opts) => globelet(globby, patterns, opts);
+module.exports.sync = (patterns, opts) => globelet(globby.sync, patterns, opts);
 module.exports.generateGlobTasks = globby.generateGlobTasks;
-
-module.exports.hasMagic = function (patterns, opts) {
-	return globby.hasMagic;
-};
+module.exports.hasMagic = globby.hasMagic;
