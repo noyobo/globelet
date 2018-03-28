@@ -24,16 +24,16 @@
   "homepage": "https://github.com/noyobo/globelet#readme",
   "dependencies": {
     "array-flatten": "^2.1.1",
-    "globby": "^6.1.0"
+    "globby": "^8.0.1"
   },
   "devDependencies": {
-    "ava": "^0.18.2",
-    "codecov": "^2.1.0",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.1.2",
+    "ava": "^0.25.0",
+    "codecov": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.2.0",
     "mkdirp": "^0.5.1",
-    "nyc": "^10.2.0",
+    "nyc": "^11.6.0",
     "output-file-sync": "^2.0.0",
     "rimraf": "^2.6.1"
   }
